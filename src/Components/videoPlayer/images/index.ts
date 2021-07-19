@@ -1,0 +1,1 @@
+export { default as ic_play } from './plyr-play.svg'
