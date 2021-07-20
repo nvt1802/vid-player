@@ -1,6 +1,6 @@
-import React, { Fragment } from "react"
-import { useState } from "react"
-import VideoPlayer from "../videoPlayer"
+import React, { Fragment } from 'react'
+import { useState } from 'react'
+import VideoPlayer from '../videoPlayer'
 
 const HomeComponent = () => {
   const [playing, setPlaying] = useState<boolean>(false)
@@ -10,8 +10,8 @@ const HomeComponent = () => {
   //   {
   //     id: 1,
   //     time: 5,
-  //     color: "#ffc837",
-  //     title: "Marker 1",
+  //     color: '#ffc837',
+  //     title: 'Marker 1',
   //   },
   // ]
 
@@ -29,22 +29,23 @@ const HomeComponent = () => {
 
   return (
     <Fragment>
-      <div style={{ width: "100%", margin: "5% 0 0 10%" }}>
+      <div style={{ width: '88%', margin: '2% 0 0 2%' }}>
         <VideoPlayer
           controls={[
-            "play",
-            "rewind",
-            "fast-forward",
-            "time",
+            'play',
+            'rewind',
+            'fast-forward',
+            'time',
             // 'progress',
-            "volume",
-            "settings",
-            "pip",
-            "full-screen",
+            'volume',
+            'settings',
+            'pip',
+            'full-screen',
           ]}
           isPlaying={playing}
           // markers={markers}
-          url="http://localhost:4000/video"
+          url="https://video-streaming-tai1802.herokuapp.com/video"
+          track={['https://video-streaming-tai1802.herokuapp.com/subtitles', 'http://localhost:4000/video']}
           volume={volume}
           loop={true}
           width="800px"

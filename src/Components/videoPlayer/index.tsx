@@ -4,6 +4,7 @@ import './styles.scss'
 
 interface IProps {
   url: string
+  track?: string[]
   controls?: string[]
   height?: string
   width?: string
@@ -33,6 +34,7 @@ function VideoPlayer(props: IProps) {
 
   const {
     url,
+    track = [],
     controls = ['play', 'time', 'progress', 'volume', 'full-screen'],
     height = '360px',
     width = '640px',
@@ -57,10 +59,6 @@ function VideoPlayer(props: IProps) {
       playerRef.current.play()
     }
   }, [isPlaying, timeStart])
-
-  // useEffect(() => {
-  //   seekToPlayer()
-  // }, [timeStart])
 
   useEffect(() => {
     isPlaying ? playerRef.current.play() : playerRef.current.pause()
@@ -192,7 +190,7 @@ function VideoPlayer(props: IProps) {
           label="English"
           kind="subtitles"
           srcLang="en"
-          src="http://localhost:4000/subtitles"
+          src={track[0]}
           default
         />
         <source src={url} type="video/mp4" />
