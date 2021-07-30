@@ -64,16 +64,6 @@ function VideoPlayer(props: IProps) {
     isPlaying ? playerRef.current.play() : playerRef.current.pause()
   }, [isPlaying])
 
-  // useEffect(() => {
-  //   setVolume(volume)
-  // }, [volume])
-
-  // const seekToPlayer = () => {
-  //   if (timeStart && playerRef) {
-  //     playerRef.current.currentTime = timeStart
-  //   }
-  // }
-
   const setVolume = (value: number) => {
     playerRef.current.volume = value
     setMuted(!value)
@@ -130,7 +120,6 @@ function VideoPlayer(props: IProps) {
   }
 
   const handleFullScreenClick = () => {
-    // const videoWrap = document.getElementsByClassName('react-video-wrap')[0]
     const { mozCancelFullScreen, webkitExitFullscreen, msExitFullscreen }: any =
       videoWrapRef
     if (isFullScreen) {

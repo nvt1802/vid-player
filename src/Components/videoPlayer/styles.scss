@@ -1,60 +1,47 @@
-/* video:hover ~ .react-video-controls {
-  visibility: visible;
-  bottom: 2em;
-  transition: 200ms;
-} */
-/* .react-video-controls:hover {
-  visibility: visible;
-  bottom: 2em;
-  transition: 200ms;
-}
-
-.react-video-captions:hover ~ .react-video-controls {
-  visibility: visible;
-  bottom: 2em;
-  transition: 200ms;
-} */
-/* video:hover ~ .react-video-close {
-  visibility: visible;
-}
-
-.react-video-close:hover {
-  visibility: visible;
-} */
-/* input[type='range'] {
-  overflow: hidden;
-  width: 80px;
-  -webkit-appearance: none;
-} */
-/* input[type='range']::-webkit-slider-runnable-track {
-  height: 10px;
-  -webkit-appearance: none;
-  color: #13bba4;
-  margin-top: -1px;
-} */
-/* input[type='range']::-webkit-slider-thumb {
-  width: 8px;
-  -webkit-appearance: none;
-  height: 8px;
-  cursor: pointer;
-  background: #434343;
-  background: black;
-  border-radius: 20px;
-} */
-@keyframes settings-button-animation {
-  from {
-    transform: rotate(0deg);
-    -webkit-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-    -webkit-transform: rotate(360deg);
-    -moz-transform: rotate(360deg);
-    -o-transform: rotate(360deg);
+video {
+  &:hover {
+    ~ {
+      .react-video-controls {
+        visibility: visible;
+        bottom: 2.5em;
+        transition: 200ms;
+      }
+      .react-video-close {
+        visibility: visible;
+      }
+    }
   }
 }
+.react-video-controls {
+  &:hover {
+    visibility: visible;
+    bottom: 2.5em;
+    transition: 200ms;
+  }
+}
+.react-video-captions {
+  &:hover {
+    ~ {
+      .react-video-controls {
+        visibility: visible;
+        bottom: 2.5em;
+        transition: 200ms;
+      }
+    }
+  }
+}
+.react-video-close {
+  &:hover {
+    visibility: visible;
+  }
+}
+
+.react-video-controls-visible {
+  visibility: visible !important;
+  bottom: 2.5em !important;
+  transition: 200ms !important;
+}
+
 .react-video-wrap {
   padding-bottom: 36px;
   position: relative;
@@ -66,12 +53,13 @@
   }
 }
 .react-video-controls {
+  visibility: hidden;
   background-color: transparent;
   display: flex;
   height: 36px;
   padding: 0 7px;
   position: absolute;
-  bottom: 2.5em;
+  bottom: -0.8em;
   left: 0;
   right: 0;
   > div {
@@ -184,17 +172,40 @@
       progress {
         display: block;
       }
+      input {
+        display: block;
+      }
+      width: 8.5em !important;
     }
     progress {
+      border-radius: 6px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      display: none;
+      height: 8px;
+      overflow: hidden;
+      position: absolute;
+      top: 0.95em;
+      left: 2em;
+      // transform: rotate(-90deg);
+      width: 100px;
+      &::-webkit-progress-value {
+        background: #ffffff;
+      }
+      &::-webkit-progress-bar {
+        background: #9d9d9d;
+      }
+    }
+    > input {
       border-radius: 2px;
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
       display: none;
       height: 12px;
       overflow: hidden;
       position: absolute;
-      top: -52px;
-      left: -31px;
-      transform: rotate(-90deg);
+      top: 0.8em;
+      left: 2em;
+      margin-right: 5em;
+      // transform: rotate(-90deg);
       width: 100px;
       &::-webkit-progress-value {
         background: #ffffff;
@@ -228,7 +239,7 @@
 }
 
 .react-video-progress {
-  visibility: visible;
+  // visibility: visible;
   background-color: transparent;
   text-align: center;
   height: 3em;
@@ -283,6 +294,7 @@
     right: 77px;
   }
   .react-video-controls {
+    bottom: 0;
     background-color: transparent;
     .play {
       background-image: url('./images/plyr-play.svg');
@@ -388,13 +400,6 @@
     }
   }
 }
-// .settings-button {
-//   &:focus ~ .menu-container {
-//     // animation: settings-button-animation infinite;
-//     // animation-duration: 0.1s;
-//     visibility: visible;
-//   }
-// }
 
 // .menu-container {
 //   &:hover {
@@ -414,14 +419,6 @@
 
 // .menu-control-back:focus ~ .menu-container {
 //   visibility: visible;
-// }
-
-// .menu-control {
-//   &:focus ~ .menu-container {
-//     // animation: settings-button-animation infinite;
-//     // animation-duration: 0.1s;
-//     visibility: visible;
-//   }
 // }
 
 // .menu-control,
@@ -583,5 +580,5 @@
   z-index: 10;
   width: 0;
   // background-color: #ff8d00;
-  background-color: rgb(255,0,0);
+  background-color: rgb(255, 0, 0);
 }

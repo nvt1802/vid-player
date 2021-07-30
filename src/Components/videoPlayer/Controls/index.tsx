@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Captions from './Captions'
 import ProgressV2 from './ProgressV2'
 import Play from './Play'
@@ -11,6 +11,7 @@ import Pip from './Pip'
 import Settings from './Settings'
 
 import { getTimeCode } from '../Utils'
+import { useRef } from 'react'
 
 interface IProps {
   playerRef: any
@@ -54,9 +55,16 @@ function Controls(props: IProps) {
   const durationTimeCode = getTimeCode(Math.ceil(duration))
   const currentTimeCode =
     currentTime !== duration ? getTimeCode(currentTime) : durationTimeCode
+  const videoControlRef = useRef<HTMLDivElement>(document.createElement('div'))
+
+  useEffect(() => {
+    playerRef.current.oncontextmenu = () => {
+      return false
+    }
+  })
 
   return (
-    <div className="react-video-controls">
+    <div ref={videoControlRef} className="react-video-controls">
       <Captions playerRef={playerRef} />
 
       <ProgressV2

@@ -26,14 +26,14 @@ const VolumeControl: FC<IProps> = ({
   })
 
   const handleVolumeClick = (e: Event) => {
-    const { clientY }: any = e
-    const y =
+    const { clientX }: any = e
+    const x =
       volumeRef.current.offsetWidth -
-      (clientY - volumeRef.current.getBoundingClientRect().top)
+      (clientX - volumeRef.current.getBoundingClientRect().right)
     const percentage =
-      (y * volumeRef.current.max) / volumeRef.current.offsetWidth
+      ((x - 100) * volumeRef.current.max) / volumeRef.current.offsetWidth
     playerRef.current.muted = false
-    setVolume(percentage / 100)
+    setVolume(1 - percentage / 100)
   }
 
   const handleMuteClick = () => {

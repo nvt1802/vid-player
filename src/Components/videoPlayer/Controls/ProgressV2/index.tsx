@@ -41,10 +41,12 @@ const PlayControl: FC<IProps> = ({
     })
 
     playerRef.current.addEventListener('timeupdate', () => {
-      const currentPos = playerRef.current.currentTime
-      const maxduration = playerRef.current.duration
+      const currentPos = playerRef.current?.currentTime || 0
+      const maxduration = playerRef.current?.duration
       const perc = (100 * currentPos) / maxduration
-      timeBarRef.current.style.width = `${perc}%`
+      if (timeBarRef.current) {
+        timeBarRef.current.style.width = `${perc}%`
+      }
     })
   })
 
